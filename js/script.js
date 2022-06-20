@@ -19,6 +19,16 @@ function addItem(value) {
   queue.append(item);
 }
 
+function checkAddItem() {
+  let value = input.value.trim();
+
+  if (ifEmpty(value) || ifLimitExceeded()) return;
+  input.value = "";
+
+  addItem(value);
+  queueList.push(value);
+}
+
 function removeItem() {
   if (!queueList.length) {
     alert("You`ve already deleated all the items.");
@@ -33,20 +43,18 @@ function ifEmpty(value) {
   if (!value) {
     alert("Input can`t be empty. Please, write something and try again.");
     return true;
-  } else {
-    return false;
   }
+  return false;
 }
 
-function ifLong() {
+function ifLimitExceeded() {
   if (queueList.length >= MAX_QUEUE_LENGTH) {
     alert(
       `Queue length can't be longer than ${MAX_QUEUE_LENGTH} items. Please, delete some items and try again`
     );
     return true;
-  } else {
-    return false;
   }
+  return false;
 }
 window.addEventListener("load", () => {
   if (storedQueue) {
@@ -56,16 +64,11 @@ window.addEventListener("load", () => {
     addItem(el);
   });
 });
+
 btnAdd.addEventListener("click", (e) => {
   e.preventDefault();
 
-  let value = input.value.trim();
-
-  if (ifEmpty(value) || ifLong()) return;
-  input.value = "";
-
-  addItem(value);
-  queueList.push(value);
+  checkAddItem();
   sessionStorage.setItem("storedQueue", JSON.stringify(queueList));
 });
 
