@@ -20,13 +20,11 @@ body {
     background: #f7f7ff;
     flex-grow: 1;
     padding: 20px;
-    /* display: flex;
-    flex-direction: column;    */
 }
 .main__title {
     text-align: center;
     font-size: 25px;
-    margin: 10px 0;
+    margin: 20px 0;
     font-weight: 700;
 }
 .form {
@@ -53,6 +51,7 @@ body {
 .queue {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
 }
 .queue__item {

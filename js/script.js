@@ -1,10 +1,11 @@
 "use strict";
 
+const MAX_QUEUE_LENGTH = 10;
+
 let input = document.querySelector("#input");
 let btnAdd = document.querySelector("#btn-add");
 let btnRemove = document.querySelector("#btn-remove");
 let queue = document.querySelector(".queue");
-const MAX_QUEUE_LENGTH = 10;
 let queueList = [];
 let storedQueue = sessionStorage.getItem("storedQueue");
 storedQueue = JSON.parse(storedQueue);
